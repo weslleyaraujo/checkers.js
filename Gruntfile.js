@@ -174,14 +174,9 @@ module.exports = function (grunt) {
     cssmin: {
       compile: {
         files: {
-          'dist/assets/css/main.css': [
-            'src/assets/css/*.css',
-            'src/assets/css/**/*.css',
-            '!src/assets/css/normalize.css'
-          ],
-
-          'dist/assets/css/normalize.css': [
-            'src/assets/css/normalize.css'
+          // your main file
+          'dist/assets/css/checkers.css': [
+            'src/assets/css/checkers.css',
           ]
         }
       }
