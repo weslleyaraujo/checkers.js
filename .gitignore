@@ -40,7 +40,7 @@ Session.vim
 *~
 
 ### Bower ###
-bower_components
+assets/components/
 
 ### Sass ###
 .sass-cache
