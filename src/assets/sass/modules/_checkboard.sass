@@ -1,0 +1,26 @@
+//
+// Checkboard
+// --------------------------------------------------
+
+.checkboard-wrap
+  +perspective(50em)
+
+.checkboard
+  border: 1px solid $checkboard-border-color
+  &.is-active
+    +transform(rotateX(40deg))
+  tr
+    &:nth-child(even)
+      td
+        &:nth-child(odd)
+          background-color: $checkboard-bg-dark
+    &:nth-child(odd)
+      td
+        &:nth-child(even)
+          background-color: $checkboard-bg-dark
+  td
+    border: 1px solid $checkboard-border-color
+    width: $checkboard-item-width
+    height: $checkboard-item-height
+    +inline-block
+    
