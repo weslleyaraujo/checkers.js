@@ -193,6 +193,7 @@ module.exports = function (grunt) {
         src: [
           // keep your javascript order here
           'src/assets/javascripts/core.js',
+          'src/assets/javascripts/methods/*.js',
           'src/assets/javascripts/field.js',
         ],
         dest: 'dist/assets/javascripts/checkers.js'
@@ -220,6 +221,7 @@ module.exports = function (grunt) {
 
             // keep your javascript order here
             'src/assets/javascripts/core.js',
+          'src/assets/javascripts/methods/*.js',
             'src/assets/javascripts/field.js',
           ],
 
@@ -267,7 +269,10 @@ module.exports = function (grunt) {
 
       dev: [
         'src/assets/css/',
-        'dist/assets/css/'
+        '!dist/components/',
+        'dist/assets',
+        'dist/*.html',
+        'dist/*.ico'
       ]
     }
   });
