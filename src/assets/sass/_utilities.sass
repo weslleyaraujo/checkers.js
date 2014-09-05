@@ -1,0 +1,41 @@
+//
+// Utility classes
+// --------------------------------------------------
+
+// Floats
+// -------------------------
+
+.clearfix
+  +clearfix
+
+.text-center
+  text-align: center
+
+.pull-right
+  float: right !important
+
+.pull-left
+  float: left !important
+
+// Toggling content
+// -------------------------
+.is-invisible
+  visibility: hidden
+
+.text-hide
+  +hide-text
+
+// Hide from screenreaders and browsers
+//
+// Credit: HTML5 Boilerplate
+
+.is-hidden
+  display: none !important
+  visibility: hidden !important
+
+// For Affix plugin
+// -------------------------
+
+.affix
+  position: fixed
+  +translate3d(0, 0, 0)

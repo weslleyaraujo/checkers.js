@@ -6,7 +6,7 @@
  *    user zoom.
 
 html
-  font-family: sans-serif
+  font-family: $font-family-base
   /* 1
   -ms-text-size-adjust: 100%
   /* 2
@@ -17,8 +17,12 @@ html
  * Remove default margin.
 
 body
-  text-align: center
   margin: 0
+  font-family: $font-family-base
+  font-size: $font-size-base
+  line-height: $line-height-base
+  color: $text-color
+  background-color: $body-bg
 
 /* HTML5 display definitions
  *==========================================================================
@@ -63,9 +67,11 @@ audio:not([controls])
  * Remove the gray background color from active links in IE 10.
 
 a
+  color: $link-color
   background: transparent
   &:active, &:hover
     outline: 0
+    color: $link-hover-color
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
