@@ -1,0 +1,21 @@
+{
+  "name": "checkers.js",
+  "version": "0.0.0",
+  "description": "Checkers game build with javascript + HTML + CSS",
+  "authors": [
+    "Weslley Araujo <weslleyaraujo20@gmail.com>"
+  ],
+  "keywords": [
+    "Checkers",
+    "Javascript",
+    "Game"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
