@@ -1,4 +1,12 @@
-  <script type="text/javascript" src="assets/javascripts/main.js"></script>
+
+  <% if (data.has_vendor && data.dev)  { %>
+    <!-- Your js order here -->
+    <script type="text/javascript" src="assets/components/underscore/underscore.js"></script>
+  <% } else if (data.has_vendor) { %>
+    <script type="text/javascript" src="assets/javascripts/vendor.js"></script>
+  <% } %>
+
+  <script type="text/javascript" src="assets/javascripts/checkers.js"></script>
 
   </body>
 </html>

@@ -18,6 +18,10 @@ module.exports = function (grunt) {
         options: {
           data: {
             dev: true,
+            // FLAG FOR VENDOR
+            //
+            // change it if you will use vendor
+            has_vendor: true,
             pkg: grunt.config('pkg')
           }
         }
@@ -29,6 +33,10 @@ module.exports = function (grunt) {
         options: {
           data: {
             dev: false,
+            // FLAG FOR VENDOR
+            //
+            // change it if you will use vendor
+            has_vendor: true,
             pkg: grunt.config('pkg')
           }
         }
@@ -93,6 +101,17 @@ module.exports = function (grunt) {
           'compass:dev',
           'copy:css'
         ]
+      },
+
+      scripts: {
+        files: [
+          'src/assets/javascripts/*.js',
+          'src/assets/javascripts/**/*.js',
+        ],
+        tasks: [
+          'copy:scripts',
+          'concat'
+        ]
       }
     },
 
@@ -154,6 +173,15 @@ module.exports = function (grunt) {
           'assets/css/**/*.css',
         ],
         dest: 'dist/'
+      },
+      scripts: {
+        expand: true,
+        cwd: 'src/',
+        src: [
+          'assets/javascripts/*',
+          'assets/javascripts/**/*.js',
+        ],
+        dest: 'dist/'
       }
     },
 
@@ -164,9 +192,10 @@ module.exports = function (grunt) {
       dist: {
         src: [
           // keep your javascript order here
-          'src/assets/javascripts/*.js',
+          'src/assets/javascripts/core.js',
+          'src/assets/javascripts/field.js',
         ],
-        dest: 'dist/assets/javascripts/main.js'
+        dest: 'dist/assets/javascripts/checkers.js'
       },
     },
 
@@ -187,9 +216,11 @@ module.exports = function (grunt) {
       compile: {
         files: {
           // common files
-          'dist/assets/javascripts/main.js': [
+          'dist/assets/javascripts/checkers.js': [
+
             // keep your javascript order here
-            'src/assets/javascripts/*.js',
+            'src/assets/javascripts/core.js',
+            'src/assets/javascripts/field.js',
           ],
 
           // vendor files
@@ -197,6 +228,7 @@ module.exports = function (grunt) {
             // keep your javascript vendor files in order here
             // example:
             // 'bower_components/jquery/dist/jquery.min.js',
+            'dist/components/underscore/underscore.js'
           ]
         }
       }
@@ -227,7 +259,10 @@ module.exports = function (grunt) {
 
     clean: {
       build: [
-        'dist'
+        '!dist/components/',
+        'dist/assets',
+        'dist/*.html',
+        'dist/*.ico'
       ],
 
       dev: [
