@@ -5,11 +5,11 @@
 ;(function(root, Checkers) {
   'use strict';
   var defaults = {
-    accessible: true,
     isFilled: false,
     achievement: false,
     element: 'td',
     side: '',
+    accessible: true,
     accessibleClass: 'is-accessible',
     template: '#field-template',
     line: 0,
@@ -20,6 +20,7 @@
     this.options = _.extend(defaults, options);
     this.prepare();
     this.bind();
+    delete this.options;
     return this;
   }
 
@@ -31,7 +32,7 @@
       accessible : this.options.accessible,
       position : this.options.position,
       line : this.options.line,
-      side : this.options.side,
+      side : this.options.side
     }).html(template(this.options));
 
     this.el = this.$el[0];
@@ -41,8 +42,8 @@
     this.$el.find('a').on('click', this.onClick.bind(this));
   };
 
-  Field.prototype.isAccesible = function () {
-    return this.options.accessible;
+  Field.prototype.isAccessible = function () {
+    return this.field.$el.data('accessible');
   };
 
   Field.prototype.onClick = function (event) {

@@ -41,7 +41,6 @@
       };
 
       line.el.appendChild(this.fragment);
-
       return line;
     }.bind(this));
   };
@@ -55,13 +54,15 @@
       item = {
         position: index,
         line: line,
+        accessible: accessible,
         field: new Checkers.components.Field({
-          accessible: accessible,
-          line: line,
           position: index,
+          line: line,
+          accessible: accessible,
           side: side
         })
       };
+
 
       this.fragment.appendChild(item.field.el);
       return item;
@@ -72,6 +73,14 @@
     this.instance.forEach(function (item) {
       this.$el.append(item.el);
     }.bind(this));
+  };
+
+  Board.prototype.get = function (line, position) {
+    if (this.instance[line] && this.instance[line].line[position]) {
+      return this.instance[line].line[position];
+    }
+
+    return false;
   };
 
   Checkers.components.Board = Board;
