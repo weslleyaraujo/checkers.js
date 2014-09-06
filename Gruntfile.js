@@ -194,6 +194,8 @@ module.exports = function (grunt) {
           // keep your javascript order here
           'src/assets/javascripts/core.js',
           'src/assets/javascripts/methods/*.js',
+          'src/assets/javascripts/piece.js',
+          'src/assets/javascripts/player.js',
           'src/assets/javascripts/field.js',
           'src/assets/javascripts/board.js',
         ],
@@ -223,6 +225,8 @@ module.exports = function (grunt) {
             // keep your javascript order here
             'src/assets/javascripts/core.js',
             'src/assets/javascripts/methods/*.js',
+            'src/assets/javascripts/piece.js',
+            'src/assets/javascripts/player.js',
             'src/assets/javascripts/field.js',
             'src/assets/javascripts/board.js',
           ],

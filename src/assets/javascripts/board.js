@@ -5,8 +5,8 @@
 ;(function(root, Checkers) {
   'use strict';
   var defaults = {
-    x: 7,
-    y: 7,
+    x: 8,
+    y: 8,
     itemElement: 'tr',
     el: '#checkboard'
   };
@@ -14,7 +14,7 @@
   function Board (options) {
     this.options = _.extend(defaults, options);
     this.$el = $(this.options.el);
-    this.instance = this.mapper(Checkers.methods.CreateArray(0, this.options.x));
+    this.instance = this.mapper(Checkers.methods.CreateArray(0, (this.options.x - 1)));
     this.render();
     delete this.fragment;
     return this;
@@ -53,7 +53,9 @@
         position: index,
         line: line,
         field: new Checkers.components.Field({
-          accessible: accessible
+          accessible: accessible,
+          line: line,
+          position: index
         })
       };
 
