@@ -195,6 +195,7 @@ module.exports = function (grunt) {
           'src/assets/javascripts/core.js',
           'src/assets/javascripts/methods/*.js',
           'src/assets/javascripts/field.js',
+          'src/assets/javascripts/board.js',
         ],
         dest: 'dist/assets/javascripts/checkers.js'
       },
@@ -221,8 +222,9 @@ module.exports = function (grunt) {
 
             // keep your javascript order here
             'src/assets/javascripts/core.js',
-          'src/assets/javascripts/methods/*.js',
+            'src/assets/javascripts/methods/*.js',
             'src/assets/javascripts/field.js',
+            'src/assets/javascripts/board.js',
           ],
 
           // vendor files
@@ -230,7 +232,8 @@ module.exports = function (grunt) {
             // keep your javascript vendor files in order here
             // example:
             // 'bower_components/jquery/dist/jquery.min.js',
-            'dist/components/underscore/underscore.js'
+            'dist/components/underscore/underscore.js',
+            'dist/components/jquery/dist/jquery.js'
           ]
         }
       }

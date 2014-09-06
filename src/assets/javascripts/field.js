@@ -5,42 +5,26 @@
 ;(function(root, Checkers) {
   'use strict';
   var defaults = {
-    x: 8,
-    y: 8
+    element: 'td',
+    accessible: true,
+    accessibleClass: 'is-accessible'
   };
 
   function Field (options) {
     this.options = _.extend(defaults, options);
-    this.instance = this.mapper(Checkers.methods.CreateArray(0, this.options.x));
+    this.prepare();
     return this;
   }
 
-  Field.prototype.getInstance = function () {
-    return this.instance;
-  };
+  Field.prototype.prepare = function () {
+    this.$el = $('<'+ this.options.element +'/>', {
+      class: this.options.accessible ? this.options.accessibleClass : '',
+      data: {
+        accessible: this.options.accessible
+      }
+    });
 
-
-  Field.prototype.mapper = function (size) {
-    return size.map(function (index) {
-      var line = {
-        line: this.mapLine(index)
-      };
-
-      return line;
-
-    }.bind(this));
-  };
-
-  Field.prototype.mapLine = function (line) {
-    return Checkers.methods.CreateArray(0, this.options.y - 1).map(function (index) {
-      index = {
-        position: index,
-        line: line
-      };
-
-      return index;
-
-    }.bind(this));
+    this.el = this.$el[0];
   };
 
   Checkers.components.Field = Field;
