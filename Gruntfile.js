@@ -281,6 +281,14 @@ module.exports = function (grunt) {
         'dist/*.html',
         'dist/*.ico'
       ]
+    },
+
+    jshint: {
+      all: [
+        'Gruntfile.js',
+        'src/assets/javascripts/*.js',
+        'src/assets/javascripts/**/*.js',
+      ]
     }
   });
 

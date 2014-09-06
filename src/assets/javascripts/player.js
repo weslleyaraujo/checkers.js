@@ -33,7 +33,6 @@
 
   Player.prototype.createPiece = function (index) {
     console.log('create piece for', index + 1, this.base);
-    debugger
   };
 
   Checkers.components.Player = Player;

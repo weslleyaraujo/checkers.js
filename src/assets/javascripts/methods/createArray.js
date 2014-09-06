@@ -14,7 +14,7 @@
       throw new Error('CreateArray: start cant be greater than end.');
     }
 
-    return [start].concat(start < end ? CreateArray((start + 1), end) : []);
+    return [start].concat(start < end ? new CreateArray((start + 1), end) : []);
   }
 
   root.CreateArray = CreateArray;

@@ -6,9 +6,10 @@
   'use strict';
 
   function Toggle (flag) {
-    var flag = flag;
+    flag = flag;
     return function () {
-      return flag = !flag;
+      flag = !flag;
+      return flag;
     };
   }
 
