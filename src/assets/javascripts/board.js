@@ -46,8 +46,7 @@
   };
 
   Board.prototype.mapLine = function (line) {
-    var toggle = Checkers.methods.Toggle();
-
+    var toggle = Checkers.methods.Toggle(!Boolean(line % 2));
     return Checkers.methods.CreateArray(0, this.options.y - 1).map(function (index) {
       var accessible = toggle(),
       item = {

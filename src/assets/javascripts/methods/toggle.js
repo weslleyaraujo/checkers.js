@@ -5,8 +5,8 @@
 ;(function(root) {
   'use strict';
 
-  function Toggle () {
-    var flag = true;
+  function Toggle (flag) {
+    var flag = flag;
     return function () {
       return flag = !flag;
     };

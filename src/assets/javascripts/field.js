@@ -7,7 +7,8 @@
   var defaults = {
     element: 'td',
     accessible: true,
-    accessibleClass: 'is-accessible'
+    accessibleClass: 'is-accessible',
+    template: '#field-template'
   };
 
   function Field (options) {
@@ -17,12 +18,15 @@
   }
 
   Field.prototype.prepare = function () {
+    var template = Checkers.methods.template('#field-template');
     this.$el = $('<'+ this.options.element +'/>', {
       class: this.options.accessible ? this.options.accessibleClass : '',
       data: {
         accessible: this.options.accessible
       }
-    });
+    }).html(template({
+      accessible: this.options.accessible
+    }));
 
     this.el = this.$el[0];
   };
