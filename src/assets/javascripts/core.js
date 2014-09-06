@@ -19,7 +19,10 @@
 
   Checkers.prototype.prepare = function () {
     this.board = new Checkers.components.Board();
-    this.player = new Checkers.components.Player();
+    this.player = new Checkers.components.Player({
+      userType: this.options.userType,
+      board: this.board
+    });
   };
 
   Checkers.prototype.start = function () {

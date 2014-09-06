@@ -52,7 +52,6 @@
     // is there a clickable item?
     // TODO: is there any piece here?
     if (!data.accessible) return;
-
     console.log('click', this.$el.data());
   };
 
