@@ -5,9 +5,11 @@
 ;(function(root, Checkers) {
   'use strict';
   var defaults = {
-    element: 'td',
     accessible: true,
-    isFilled: false
+    isFilled: false,
+    achievement: false,
+    element: 'td',
+    side: '',
     accessibleClass: 'is-accessible',
     template: '#field-template',
     line: 0,
@@ -28,13 +30,11 @@
     }).data({
       accessible : this.options.accessible,
       position : this.options.position,
-      line : this.options.line
-    }).html(template({
-      accessible: this.options.accessible
-    }));
+      line : this.options.line,
+      side : this.options.side,
+    }).html(template(this.options));
 
     this.el = this.$el[0];
-
   };
 
   Field.prototype.bind = function () {

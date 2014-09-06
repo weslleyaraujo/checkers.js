@@ -6,7 +6,8 @@
 (function (root) {
   'use strict';
   var defaults = {
-    activeClass: 'is-active'
+    activeClass: 'is-usertype-',
+    userType: 'A'
   };
 
   function Checkers (options) {
@@ -22,7 +23,9 @@
   };
 
   Checkers.prototype.start = function () {
-    this.board.$el.addClass(this.options.activeClass);
+    var className = this.options.activeClass +
+        this.options.userType.toLowerCase();
+    this.board.$el.addClass(className);
   };
 
   Checkers.methods = {};

@@ -19,7 +19,7 @@
   };
 
   Player.prototype.createPiece = function (index) {
-    console.log('create piece for', index + 1);
+    // console.log('create piece for', index + 1);
   };
 
   Checkers.components.Player = Player;

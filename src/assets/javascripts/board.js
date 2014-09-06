@@ -32,11 +32,12 @@
           line: index
         }
       }),
-
+      side = index < 3 ? 'B' : 'A', // 4
       line = {
-        line: this.mapLine(index),
+        line: this.mapLine(index, side),
         $el: $el,
-        el: $el[0]
+        el: $el[0],
+        side: side
       };
 
       line.el.appendChild(this.fragment);
@@ -45,9 +46,11 @@
     }.bind(this));
   };
 
-  Board.prototype.mapLine = function (line) {
-    var toggle = Checkers.methods.Toggle(!Boolean(line % 2));
-    return Checkers.methods.CreateArray(0, this.options.y - 1).map(function (index) {
+  Board.prototype.mapLine = function (line, side) {
+    var toggle = Checkers.methods.Toggle(!Boolean(line % 2)),
+        board = Checkers.methods.CreateArray(0, this.options.y - 1);
+
+    return board.map(function (index) {
       var accessible = toggle(),
       item = {
         position: index,
@@ -55,7 +58,8 @@
         field: new Checkers.components.Field({
           accessible: accessible,
           line: line,
-          position: index
+          position: index,
+          side: side
         })
       };
 

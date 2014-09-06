@@ -7,8 +7,10 @@
 
 .checkboard
   border: 1px solid $checkboard-border-color
-  &.is-active
+  &.is-usertype-a
     +transform(rotateX(40deg))
+  &.is-usertype-b
+    +transform(rotate(180deg) rotateX(-40deg))
   td
     border: 1px solid $checkboard-border-color
     width: $checkboard-item-width
