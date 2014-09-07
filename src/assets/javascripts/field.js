@@ -25,7 +25,7 @@
   }
 
   Field.prototype.prepare = function () {
-    var template = Checkers.methods.template('#field-template');
+    this.template = Checkers.methods.template('#field-template');
     this.$el = $('<'+ this.options.element +'/>', {
       class: this.options.accessible ? this.options.accessibleClass : '',
     }).data({
@@ -33,9 +33,13 @@
       position : this.options.position,
       line : this.options.line,
       side : this.options.side
-    }).html(template(this.options));
+    }).html(this.template(this.options));
 
     this.el = this.$el[0];
+  };
+
+  Field.prototype.render = function () {
+    this.$el.html(this.template(this.$el.data()));
   };
 
   Field.prototype.bind = function () {

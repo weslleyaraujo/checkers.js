@@ -17,6 +17,10 @@
         line: 0,
         position: 7
       }
+    },
+    pieceType: {
+      normal: 'j',
+      queen: 'd',
     }
   };
 
@@ -35,15 +39,22 @@
   Player.prototype.createPiece = function (index) {
     var actual = this.options.board.get(this.base.line, this.base.position);
     if (actual.field.$el.data('accessible')) {
+
       actual.field.piece = new Checkers.components.Piece({
         line: actual.field.$el.data('line'),
         position: actual.field.$el.data('position')
       });
 
-      this.options.pieces ++;
+      this.setPiece(actual.field.$el, 'normal');
+      this.options.pieces++;
     }
 
     this.update(this.options.userType);
+  };
+
+  Player.prototype.setPiece = function ($el, type) {
+    $el.addClass('is-piece').addClass('is-usertype-' + this.options.userType.toLowerCase());
+    $el.find('.piece').html(this.options.pieceType[type]);
   };
 
   Player.prototype.update = function (userType) {
@@ -52,7 +63,7 @@
         this.setBase(this.base.line, this.base.position + 1);
       }
       else if (this.options.board.get(this.base.line -1, 0)) {
-        this.setBase(this.base.line - 1, this.base.position);
+        this.setBase(this.base.line - 1, 0);
       }
     }
     else {

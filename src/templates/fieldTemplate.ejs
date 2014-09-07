@@ -1,9 +1,16 @@
 <script type="text/template"
   id="field-template">
   <a href="#"
+    class="piece text-center"
+    data-line="{{ line }}"
+    data-position="{{ position }}"
     data-accessible="{{ accessible }}">
-    #
+      g
     </a>
-      line: {{line}} <br />
-      position: {{position}} <br />
+
+<div class="is-hidden">
+  Line: {{line}} <br />
+  Position: {{position}} <br />
+</div>
+
 </script>
