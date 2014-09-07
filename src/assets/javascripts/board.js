@@ -8,7 +8,8 @@
     x: 8,
     y: 8,
     itemElement: 'tr',
-    el: '#checkboard'
+    el: '#checkboard',
+    userType: 'A'
   };
 
   function Board (options) {
@@ -59,7 +60,8 @@
           position: index,
           line: line,
           accessible: accessible,
-          side: side
+          side: side,
+          userType: this.options.userType
         })
       };
 
@@ -67,6 +69,29 @@
       this.fragment.appendChild(item.field.el);
       return item;
     }.bind(this));
+  };
+
+  Board.prototype.bind = function () {
+    // bind after players
+    this.instance.forEach(function (item) {
+      item.line.forEach(function (check) {
+        check.field.bind()
+      });
+    });
+
+    Checkers.methods.subscribe('explore', this.onExplore.bind(this));
+  };
+
+  Board.prototype.onExplore = function (data) {
+    var next = (data.position + 1),
+      prev = data.position - 1,
+      lines = [
+        (data.line - 1),
+        (data.line + 1),
+        data.line
+      ];
+    
+    debugger
   };
 
   Board.prototype.render = function () {

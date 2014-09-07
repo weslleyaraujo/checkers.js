@@ -18,17 +18,28 @@
   }
 
   Checkers.prototype.prepare = function () {
-    this.board = new Checkers.components.Board();
+    this.board = new Checkers.components.Board({
+      userType: this.options.userType,
+    });
     this.player = new Checkers.components.Player({
       userType: this.options.userType,
       board: this.board
     });
+
+    // versus
+    this.versus = new Checkers.components.Player({
+      userType: 'B',
+      board: this.board
+    });
+
   };
 
   Checkers.prototype.start = function () {
     var className = this.options.activeClass +
         this.options.userType.toLowerCase();
+
     this.board.$el.addClass(className);
+    this.board.bind();
   };
 
   Checkers.methods = {};

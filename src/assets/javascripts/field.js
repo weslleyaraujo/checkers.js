@@ -18,8 +18,8 @@
 
   function Field (options) {
     this.options = _.extend(defaults, options);
+    this.userType = this.options.userType;
     this.prepare();
-    this.bind();
     delete this.options;
     return this;
   }
@@ -42,8 +42,11 @@
     this.$el.html(this.template(this.$el.data()));
   };
 
-  Field.prototype.bind = function () {
-    this.$el.find('a').on('click', this.onClick.bind(this));
+  Field.prototype.bind = function (event) {
+    event && event.preventDefault();
+    if (this.$el.hasClass('is-usertype-' + this.userType.toLowerCase())) {
+      this.$el.find('a').on('click', this.onClick.bind(this));
+    };
   };
 
   Field.prototype.isAccessible = function () {
@@ -55,9 +58,8 @@
         data = this.$el.data();
 
     // is there a clickable item?
-    // TODO: is there any piece here?
     if (!data.accessible) return;
-    console.log('click', this.$el.data());
+    Checkers.methods.publish('explore', [this.$el.data()]);
   };
 
   Checkers.components.Field = Field;

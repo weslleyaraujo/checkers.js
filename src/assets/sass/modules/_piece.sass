@@ -7,7 +7,6 @@
   text-decoration: none
   font-size: $piece-font-size
   display: none
-  +transform(rotateX(-40deg))
 
 // shows on checkboard
 .is-piece
@@ -15,11 +14,11 @@
     display: block
 
 // colors
-.is-usertype-a
+td.is-usertype-a
   .piece
     color: $piece-usertype-a-color
 
-.is-usertype-b
+td.is-usertype-b
   .piece
-    color: $piece-usertype-b-color
+    color: $piece-usertype-b-color !important
     +transform(rotate(-180deg))
