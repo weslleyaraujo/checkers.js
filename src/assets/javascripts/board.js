@@ -82,16 +82,39 @@
     Checkers.methods.subscribe('explore', this.onExplore.bind(this));
   };
 
+  Board.prototype.clearPlayables = function () {
+    this.$el.find('td.is-playable').removeClass('is-playable');
+  };
+
   Board.prototype.onExplore = function (data) {
-    var next = (data.position + 1),
+    var userType = data.userType,
+      next = (data.position + 1),
       prev = data.position - 1,
       lines = [
         (data.line - 1),
         (data.line + 1),
         data.line
       ];
+
+    this.clearPlayables();
+
+    lines.forEach(function(line) {
+    //  console.log(data,line, this.instance[line].line[prev], this.instance[line].line[next])
+
+      try {
+        if (this.instance[line].line[next].accessible && !this.instance[line].line[next].field.hasOwnProperty('piece')) {
+          this.instance[line].line[next].field.$el.addClass('is-playable');
+        }
+      } catch (e) {}
+
+      try {
+        if (this.instance[line].line[prev].accessible && !this.instance[line].line[prev].field.hasOwnProperty('piece')) {
+          this.instance[line].line[prev].field.$el.addClass('is-playable');
+        }
+      } catch (e) {}
+
+    }.bind(this))
     
-    debugger
   };
 
   Board.prototype.render = function () {

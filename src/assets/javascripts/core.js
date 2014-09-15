@@ -21,6 +21,7 @@
     this.board = new Checkers.components.Board({
       userType: this.options.userType,
     });
+
     this.player = new Checkers.components.Player({
       userType: this.options.userType,
       board: this.board

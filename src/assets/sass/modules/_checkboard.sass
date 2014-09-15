@@ -17,6 +17,9 @@
     height: $checkboard-item-height
     position: relative
     +inline-block
+    &.is-playable
+      &:after
+        background-color: $checkboard-bg-playable
     &.is-accessible
       background-color: $checkboard-bg-dark
     &:after
@@ -24,5 +27,3 @@
       position: absolute
       width: 100%
       height: 100%
-      display: none
-

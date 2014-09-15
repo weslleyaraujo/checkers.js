@@ -39,10 +39,10 @@
   Player.prototype.createPiece = function (index) {
     var actual = this.options.board.get(this.base.line, this.base.position);
     if (actual.field.$el.data('accessible')) {
-
       actual.field.piece = new Checkers.components.Piece({
         line: actual.field.$el.data('line'),
-        position: actual.field.$el.data('position')
+        position: actual.field.$el.data('position'),
+        player: actual.field.userType
       });
 
       this.setPiece(actual.field.$el, 'normal');

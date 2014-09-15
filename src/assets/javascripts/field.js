@@ -44,9 +44,7 @@
 
   Field.prototype.bind = function (event) {
     event && event.preventDefault();
-    if (this.$el.hasClass('is-usertype-' + this.userType.toLowerCase())) {
-      this.$el.find('a').on('click', this.onClick.bind(this));
-    };
+    this.$el.find('a').on('click', this.onClick.bind(this));
   };
 
   Field.prototype.isAccessible = function () {
@@ -56,10 +54,12 @@
   Field.prototype.onClick = function (event) {
     var Prevent = event && event.preventDefault(),
         data = this.$el.data();
+        data.userType = this.userType;
 
     // is there a clickable item?
-    if (!data.accessible) return;
-    Checkers.methods.publish('explore', [this.$el.data()]);
+    debugger
+    if (!data.accessible || !this.hasOwnProperty('piece') && this.piece.options.player !== data.userType) return;
+    Checkers.methods.publish('explore', [data]);
   };
 
   Checkers.components.Field = Field;

@@ -8,7 +8,8 @@
     isQueen: false,
     isAlive: true,
     line: 0,
-    position: 0
+    position: 0,
+    player: 'A'
   };
 
   function Piece (options) {
